@@ -1,0 +1,96 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+html body {
+    background: #ccc;
+    margin: 20px;
+}
+
+main {
+    background: #fff;
+}
+
+header h1 {
+    margin-top: 15px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+header hr {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+header p {
+    color: #cac7cb;
+}
+
+header img {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.row {
+    padding: 10px;
+}
+
+.channel-item a:link,
+.channel-item a:visited {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.channel-item a:hover {
+    text-decoration: underline;
+}
+
+.channel-date {
+    font-size: 11px;
+    color: #767976;
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+
+.channel-description {
+    font-size: 14px;
+}
+
+.channel-description img {
+    margin-left: 0;
+}
+
+.channel-description blockquote {
+    font-size: inherit;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background: #ededed;
+    border-left: 2px solid #c2c5c2;
+    padding: 10px;
+    font-style: italic;
+    display: inline-block;
+    width: 100%;
+}
+
+.channel-description a:link,
+.channel-description a:visited {
+    font-weight: normal;
+}
+
+.channel-description img {
+    border: 1px solid #ededed;
+    padding: 3px;
+}
+
+.channel-item .channel-show {
+    font-size: 13px;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+footer {
+    text-align: right;
+    font-size: 12px;
+    color: #000;
+}

@@ -1,0 +1,50 @@
+<html lang="<?= $configuration->getLanguage() ?>">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="index, follow, archive">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="referrer" content="no-referrer">
+        <meta name="generator" content="MultiRssCombiner (+https://github.com/clash82/multi-rss-combiner">
+        <title><?= $configuration->getTitle() ?></title>
+        <meta name="description" content="<?= $configuration->getDescription() ?>">
+        <link rel="alternate" type="application/rss+xml" title="<?= $configuration->getTitle() ?>" href="//<?= $_SERVER['SERVER_NAME'] ?>?xml">
+        <link rel="shortcut icon" href="<?= $configuration->getIcon() ?>">
+        <link href="/public/style.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    </head>
+    <body>
+        <main class="container">
+            <header class="row">
+                <div class="col-md-10 col-sm-6 col-8">
+                    <h1><?= $configuration->getTitle() ?></h1>
+                    <hr>
+                    <p><?= $configuration->getDescription() ?></p>
+                </div>
+                <div class="col-md-2 col-sm-6 col-4">
+                    <img src="<?= $configuration->getIcon() ?>" class="img-fluid" title="<?= $configuration->getTitle() ?>">
+                </div>
+            </header>
+
+            <?php foreach($items as $item) { ?>
+                <div class="row channel-item">
+                    <div class="col-md-12">
+                        <a href="<?= $item->getLink() ?>" target="_blank"><?= $item->getChannelName() ?>: <?= $item->getTitle() ?></a>
+                        <div class="channel-date"><?= $item->getPubDate()->format($configuration->getDateFormat()) ?></div>
+                        <div class="channel-description"><?= $item->getDescription() ?></div>
+                        <div style="clear: both"></div>
+                        <div class="channel-show"><a href="<?= $item->getLink() ?>" target="_blank">show &raquo;</a></div>
+                    </div>
+                </div>
+            <?php } ?>
+
+            <footer class="row">
+                <div class="col-md-12">
+                    Click <a href="/?xml">here</a> to subscribe this RSS channel
+                </div>
+            </footer>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "clash82/multi-rss-combiner",
+  "description": "Combines many RSS channels into single one (includes also nice page to display all items)",
+  "homepage": "https://github.com/clash82/multi-rss-combiner",
+  "license": "GPL-2.0-only",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Rafał Toborek",
+      "homepage": "https://toborek.info"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "ext-simplexml": "*",
+    "ext-json": "*",
+    "ext-libxml": "*",
+    "wolfcast/browser-detection": "^2.9",
+    "simplepie/simplepie": "^1.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "MultiRssCombiner\\": "src/lib/"
+    }
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^2.13",
+    "phpstan/phpstan": "^0.10.3"
+  }
+}

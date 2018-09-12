@@ -1,0 +1,28 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <atom:link href="<?= $configuration->getCurrentHostname() ?>?xml" rel="self" type="application/rss+xml" />
+        <title><?= $configuration->getTitle() ?></title>
+        <link><?= $configuration->getLink() ?></link>
+        <language><?= $configuration->getLanguage() ?></language>
+        <description><?= $configuration->getDescription() ?></description>
+        <copyright><?= $configuration->getCopyright() ?></copyright>
+        <image>
+            <url><?= $configuration->getIcon() ?></url>
+            <title><?= $configuration->getTitle() ?></title>
+            <link><?= $configuration->getLink() ?></link>
+            <width><?= $configuration->getIconWidth() ?></width>
+            <height><?= $configuration->getIconHeight() ?></height>
+            <description><?= $configuration->getDescription() ?></description>
+        </image>
+
+        <?php foreach($items as $item) { ?>
+            <item>
+                <title><?= $item->getChannelName() ?>: <?= $item->getTitle() ?></title>
+                <link><?= $item->getLink() ?></link>
+                <description><![CDATA[<?= $item->getDescription() ?>]]></description>
+                <guid isPermaLink="false"><?= sprintf('%s%s', $configuration->getGuidPrefix(), $item->getGuid()) ?></guid>
+                <pubDate><?= $item->getPubDate()->format('r') ?></pubDate>
+            </item>
+        <?php } ?>
+    </channel>
+</rss>

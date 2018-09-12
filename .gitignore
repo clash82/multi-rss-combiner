@@ -1,0 +1,7 @@
+/vendor/
+/public/
+!public/style.css
+/cache/*.xml
+/config/*.ini
+.php_cs.cache
+composer.phar

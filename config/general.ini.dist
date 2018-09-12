@@ -1,0 +1,30 @@
+; Main page/channel title
+title=
+
+; Main page/channel description
+description=
+
+; Link to the home page included in the RSS channel
+link=
+
+; Copyright value used in RSS channel
+copyright=
+
+; RSS channel/page language (eg. `pl`)
+language=
+
+; RSS icon file and setting (please use only filename, image will be loaded by default from the `/public` directory)
+icon=
+
+; RSS icon size [px]
+icon_width=
+icon_height=
+
+; date format used to display under every item on the main page
+date_format=Y-m-d H:i
+
+; limit of RSS entries to show in main channel/page (eg. `10`)
+limit=
+
+; prefix used when generating item GUID (eg. `guid-`)
+guid_prefix=

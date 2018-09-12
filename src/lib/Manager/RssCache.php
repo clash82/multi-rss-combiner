@@ -1,0 +1,43 @@
+<?php
+
+declare(strict_types=1);
+
+namespace MultiRssCombiner\Manager;
+
+use MultiRssCombiner\Value\Item;
+
+class RssCache implements CacheManager
+{
+    /** @var string */
+    private $fileName;
+
+    /** @var \MultiRssCombiner\Value\Item[] */
+    private $cache = [];
+
+    public function __construct(string $fileName)
+    {
+        $this->fileName = sprintf('%s%s', getcwd(), $fileName);
+    }
+
+    public function add(Item $item): void
+    {
+        $this->cache[] = $item;
+    }
+
+    public function save(): void
+    {
+        $xml = new \SimpleXMLElement('<cache/>');
+
+        foreach ($this->cache as $item) {
+            $element = $xml->addChild('item');
+            $element->addChild('channelName', $item->getChannelName());
+            $element->addChild('title', $item->getTitle());
+            $element->addChild('description', $item->getDescription());
+            $element->addChild('link', $item->getLink());
+            $element->addChild('guid', $item->getGuid());
+            $element->addChild('pubDate', $item->getPubDate()->format('r'));
+        }
+
+        file_put_contents($this->fileName, $xml->asXML());
+    }
+}
