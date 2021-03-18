@@ -56,8 +56,20 @@ header img {
     font-size: 14px;
 }
 
-.channel-description img {
+.channel-description img,
+.channel-image img {
+    max-width: 180px;
     margin-left: 0;
+    margin-right: 15px;
+    border: 1px solid #ededed;
+    padding: 3px;
+    float: left;
+}
+
+.channel-image img {
+    float: none;
+    max-width: 100%;
+    margin-right: 0;
 }
 
 .channel-description blockquote {
@@ -76,11 +88,6 @@ header img {
 .channel-description a:link,
 .channel-description a:visited {
     font-weight: normal;
-}
-
-.channel-description img {
-    border: 1px solid #ededed;
-    padding: 3px;
 }
 
 .channel-item .channel-show {

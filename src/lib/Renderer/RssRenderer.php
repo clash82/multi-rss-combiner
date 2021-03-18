@@ -9,7 +9,6 @@ use MultiRssCombiner\Value\General;
 class RssRenderer extends AbstractRender implements TemplateRender
 {
     /**
-     * @param \MultiRssCombiner\Value\General $configuration
      * @param \MultiRssCombiner\Value\Item[] $items
      *
      * @throws \MultiRssCombiner\Exception\TemplateNotFoundException

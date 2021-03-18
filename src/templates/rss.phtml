@@ -19,7 +19,7 @@
             <item>
                 <title><?= $item->getChannelName() ?>: <?= $item->getTitle() ?></title>
                 <link><?= $item->getLink() ?></link>
-                <description><![CDATA[<?= $item->getDescription() ?>]]></description>
+                <description><![CDATA[<?php if ($item->hasDescription()): ?><?php if ($item->hasImage()): ?><img src="<?= $item->getImage() ?>" width="180" hspace="5" align="left"> <?php endif; ?><?= $item->getDescription() ?><?php else: ?><?php if ($item->hasImage()): ?><img src="<?= $item->getImage() ?>"><?php endif; ?><?php endif; ?>]]></description>
                 <guid isPermaLink="false"><?= sprintf('%s%s', $configuration->getGuidPrefix(), $item->getGuid()) ?></guid>
                 <pubDate><?= $item->getPubDate()->format('r') ?></pubDate>
             </item>

@@ -35,6 +35,7 @@ class RssCache implements CacheManager
             $element->addChild('description', $item->getDescription());
             $element->addChild('link', $item->getLink());
             $element->addChild('guid', $item->getGuid());
+            $element->addChild('image', $item->getImage());
             $element->addChild('pubDate', $item->getPubDate()->format('r'));
         }
 

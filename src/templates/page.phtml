@@ -33,7 +33,20 @@
                     <div class="col-md-12">
                         <a href="<?= $item->getLink() ?>" target="_blank"><?= $item->getChannelName() ?>: <?= $item->getTitle() ?></a>
                         <div class="channel-date"><?= $item->getPubDate()->format($configuration->getDateFormat()) ?></div>
-                        <div class="channel-description"><?= $item->getDescription() ?></div>
+                            <?php if ($item->hasDescription()): ?>
+                                <div class="channel-description">
+                                    <?php if ($item->hasImage()): ?>
+                                        <img src="<?= $item->getImage() ?>">
+                                    <?php endif; ?>
+                                    <?= $item->getDescription() ?>
+                                </div>
+                            <?php else: ?>
+                                <div class="channel-image">
+                                    <?php if ($item->hasImage()): ?>
+                                        <img src="<?= $item->getImage() ?>">
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
                         <div style="clear: both"></div>
                         <div class="channel-show"><a href="<?= $item->getLink() ?>" target="_blank">show &raquo;</a></div>
                     </div>

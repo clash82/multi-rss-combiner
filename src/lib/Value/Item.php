@@ -24,12 +24,16 @@ class Item
     /** @var \DateTime */
     private $pubDate;
 
+    /** @var string */
+    private $image;
+
     public function __construct(
         string $channelName,
         string $title,
         string $description,
         string $link,
         string $guid,
+        ?string $image,
         \DateTime $pubDate
     ) {
         $this->channelName = $channelName;
@@ -37,6 +41,7 @@ class Item
         $this->description = $description;
         $this->link = $link;
         $this->guid = $guid;
+        $this->image = $image;
         $this->pubDate = $pubDate;
     }
 
@@ -66,6 +71,21 @@ class Item
     public function getGuid(): string
     {
         return $this->guid;
+    }
+
+    public function getImage(): string
+    {
+        return $this->image;
+    }
+
+    public function hasImage(): bool
+    {
+        return $this->image ? true : false;
+    }
+
+    public function hasDescription(): bool
+    {
+        return empty(trim(strip_tags($this->description))) ? false : true;
     }
 
     public function getPubDate(): \DateTime

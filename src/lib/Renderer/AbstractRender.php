@@ -10,13 +10,9 @@ use MultiRssCombiner\Value\General;
 abstract class AbstractRender
 {
     /**
-     * @param string $filename
-     * @param \MultiRssCombiner\Value\General $configuration
      * @param \MultiRssCombiner\Value\Item[] $items
      *
      * @throws TemplateNotFoundException
-     *
-     * @return string
      */
     protected function parseTemplate(string $filename, General $configuration, array $items): string
     {

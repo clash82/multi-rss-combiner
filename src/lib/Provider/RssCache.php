@@ -45,6 +45,7 @@ class RssCache implements CacheProvider
                 $item['description'],
                 $item['link'],
                 $item['guid'],
+                \is_array($item['image']) ? null : $item['image'],
                 $date
             );
         }

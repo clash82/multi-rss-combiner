@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MultiRssCombiner;
 
+use DOMDocument;
 use MultiRssCombiner\Manager\RssCache as RssCacheManager;
 use MultiRssCombiner\Provider\ChannelConfiguration;
 use MultiRssCombiner\Provider\GeneralConfiguration;
@@ -71,12 +72,23 @@ class App
             foreach ($feedItems as $item) {
                 $date = new \DateTime($item->get_date());
 
+                $image = '';
+                if (null !== $item->get_content()) {
+                    $image = $this->getFirstImage($item->get_content());
+                }
+
+                $description = $item->get_description();
+                if (null !== $description) {
+                    $description = preg_replace('/<img[^>]+\>/i', '', $description);
+                }
+
                 $item = new Item(
                     $channel->getName(),
                     $item->get_title() ?? '',
-                    $item->get_description() ?? '',
+                    $description ?? '',
                     $item->get_link() ?? '',
                     $item->get_id() ?? '',
+                    $image ?? '',
                     $date
                 );
 
@@ -97,5 +109,26 @@ class App
         }
 
         $cache->save();
+    }
+
+    private function getFirstImage(string $content): ?string
+    {
+        $dom = new DOMDocument();
+        @$dom->loadHTML($content);
+
+        $links = [];
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $singleImage) {
+            $src = $singleImage->getAttribute('src');
+
+            $links[] = $src;
+        }
+
+        if (\count($links) > 0) {
+            return $links[0];
+        }
+
+        return null;
     }
 }
