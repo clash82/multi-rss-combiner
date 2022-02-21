@@ -16,10 +16,10 @@ use Wolfcast\BrowserDetection;
 
 class App
 {
-    const APP_RSS_CACHE_FILE = '/cache/cache.xml';
-    const APP_CONFIGURATION_FILE = '/config/general.ini';
-    const APP_PUBLIC_FILES_DIR = '/public/';
-    const APP_CHANNEL_CONFIGURATION_PATH = '/config/';
+    public const APP_RSS_CACHE_FILE = '/cache/cache.xml';
+    public const APP_CONFIGURATION_FILE = '/config/general.ini';
+    public const APP_PUBLIC_FILES_DIR = '/public/';
+    public const APP_CHANNEL_CONFIGURATION_PATH = '/config/';
 
     public function buildView($showDefault = true): void
     {
