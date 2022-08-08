@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace MultiRssCombiner\Provider;
 
@@ -8,8 +6,8 @@ use MultiRssCombiner\Value\Channel;
 
 class ChannelConfiguration implements ChannelConfigurationProvider
 {
-    /** @var \MultiRssCombiner\Value\Channel[] */
-    private $channels = [];
+    /** @var Channel[] */
+    private array $channels = [];
 
     public function __construct(string $path)
     {
@@ -32,7 +30,7 @@ class ChannelConfiguration implements ChannelConfigurationProvider
     }
 
     /**
-     * @return \MultiRssCombiner\Value\Channel[]
+     * @return Channel[]
      */
     public function getAll(): array
     {

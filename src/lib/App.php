@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace MultiRssCombiner;
 
@@ -17,11 +15,14 @@ use Wolfcast\BrowserDetection;
 class App
 {
     public const APP_RSS_CACHE_FILE = '/cache/cache.xml';
+
     public const APP_CONFIGURATION_FILE = '/config/general.ini';
+
     public const APP_PUBLIC_FILES_DIR = '/public/';
+
     public const APP_CHANNEL_CONFIGURATION_PATH = '/config/';
 
-    public function buildView($showDefault = true): void
+    public function buildView(bool $showDefault = true): void
     {
         $configuration = new GeneralConfiguration(self::APP_CONFIGURATION_FILE);
         $cache = new RssCacheProvider(self::APP_RSS_CACHE_FILE, $configuration->get()->getLimit());

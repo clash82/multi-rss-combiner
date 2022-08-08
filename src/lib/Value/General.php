@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace MultiRssCombiner\Value;
 
@@ -8,38 +6,27 @@ use MultiRssCombiner\App;
 
 class General
 {
-    /** @var string */
-    private $title;
+    private string $title;
 
-    /** @var string */
-    private $description;
+    private string $description;
 
-    /** @var string */
-    private $link;
+    private string $link;
 
-    /** @var string */
-    private $language;
+    private string $language;
 
-    /** @var string */
-    private $copyright;
+    private string $copyright;
 
-    /** @var string */
-    private $icon;
+    private string $icon;
 
-    /** @var int */
-    private $iconWidth;
+    private int $iconWidth;
 
-    /** @var int */
-    private $iconHeight;
+    private int $iconHeight;
 
-    /** @var string */
-    private $dateFormat;
+    private string $dateFormat;
 
-    /** @var int */
-    private $limit;
+    private int $limit;
 
-    /** @var string */
-    private $guidPrefix;
+    private string $guidPrefix;
 
     public function __construct(
         string $title,

@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace MultiRssCombiner\Provider;
 
@@ -8,8 +6,8 @@ use MultiRssCombiner\Value\Item;
 
 class RssCache implements CacheProvider
 {
-    /** @var \MultiRssCombiner\Value\Item[] */
-    private $cache = [];
+    /** @var Item[] */
+    private array $cache = [];
 
     public function __construct(string $fileName, int $limit)
     {
@@ -52,7 +50,7 @@ class RssCache implements CacheProvider
     }
 
     /**
-     * @return \MultiRssCombiner\Value\Item[]
+     * @return Item[]
      */
     public function get(): array
     {

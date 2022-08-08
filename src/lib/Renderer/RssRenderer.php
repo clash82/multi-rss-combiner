@@ -1,17 +1,17 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace MultiRssCombiner\Renderer;
 
+use MultiRssCombiner\Exception\TemplateNotFoundException;
 use MultiRssCombiner\Value\General;
+use MultiRssCombiner\Value\Item;
 
 class RssRenderer extends AbstractRender implements TemplateRender
 {
     /**
-     * @param \MultiRssCombiner\Value\Item[] $items
+     * @param Item[] $items
      *
-     * @throws \MultiRssCombiner\Exception\TemplateNotFoundException
+     * @throws TemplateNotFoundException
      */
     public function display(General $configuration, array $items): void
     {

@@ -1,31 +1,24 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace MultiRssCombiner\Value;
 
+use DateTime;
+
 class Item
 {
-    /** @var string */
-    private $channelName;
+    private string $channelName;
 
-    /** @var string */
-    private $title;
+    private string $title;
 
-    /** @var string */
-    private $description;
+    private string $description;
 
-    /** @var string */
-    private $link;
+    private string $link;
 
-    /** @var string */
-    private $guid;
+    private string $guid;
 
-    /** @var \DateTime */
-    private $pubDate;
+    private DateTime $pubDate;
 
-    /** @var string */
-    private $image;
+    private ?string $image = null;
 
     public function __construct(
         string $channelName,
@@ -58,9 +51,8 @@ class Item
     public function getDescription(): string
     {
         $description = preg_replace('#<br />(\s*<br />)+#', '<br>', $this->description);
-        $description = preg_replace('#<br>(\s*<br>)+#', '<br>', $description);
 
-        return $description;
+        return preg_replace('#<br>(\s*<br>)+#', '<br>', $description);
     }
 
     public function getLink(): string
@@ -80,12 +72,12 @@ class Item
 
     public function hasImage(): bool
     {
-        return $this->image ? true : false;
+        return (bool)$this->image;
     }
 
     public function hasDescription(): bool
     {
-        return empty(trim(strip_tags($this->description))) ? false : true;
+        return !empty(trim(strip_tags($this->description)));
     }
 
     public function getPubDate(): \DateTime

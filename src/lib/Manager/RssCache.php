@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace MultiRssCombiner\Manager;
 
@@ -8,11 +6,10 @@ use MultiRssCombiner\Value\Item;
 
 class RssCache implements CacheManager
 {
-    /** @var string */
-    private $fileName;
+    private string $fileName;
 
-    /** @var \MultiRssCombiner\Value\Item[] */
-    private $cache = [];
+    /** @var Item[] */
+    private array $cache = [];
 
     public function __construct(string $fileName)
     {

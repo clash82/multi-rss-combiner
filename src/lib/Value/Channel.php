@@ -1,16 +1,12 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace MultiRssCombiner\Value;
 
 class Channel
 {
-    /** @var string */
-    private $name;
+    private string $name;
 
-    /** @var string */
-    private $url;
+    private string $url;
 
     public function __construct(
         string $name,

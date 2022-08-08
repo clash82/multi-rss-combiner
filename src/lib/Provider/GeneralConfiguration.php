@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace MultiRssCombiner\Provider;
 
@@ -9,8 +7,7 @@ use MultiRssCombiner\Value\General;
 
 class GeneralConfiguration implements GeneralConfigurationProvider
 {
-    /** @var \MultiRssCombiner\Value\General */
-    private $configuration;
+    private General $configuration;
 
     public function __construct(string $filename)
     {

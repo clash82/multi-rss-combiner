@@ -1,13 +1,13 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace MultiRssCombiner\Provider;
+
+use MultiRssCombiner\Value\Item;
 
 interface CacheProvider
 {
     /**
-     * @return \MultiRssCombiner\Value\Item[]
+     * @return Item[]
      */
     public function get(): array;
 }
