@@ -17,12 +17,12 @@ class RssCache implements CacheProvider
             return;
         }
 
-        $cache = file_get_contents($cacheFile);
+        $cache = (string)file_get_contents($cacheFile);
 
         $xml = simplexml_load_string($cache, 'SimpleXMLElement', LIBXML_NOCDATA);
 
-        $json = json_encode($xml);
-        $cacheContent = json_decode($json, true);
+        $json = json_encode($xml, JSON_THROW_ON_ERROR);
+        $cacheContent = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
 
         if (!isset($cacheContent['item'])) {
             return;

@@ -7,7 +7,7 @@ use MultiRssCombiner\Value\General;
 
 class GeneralConfiguration implements GeneralConfigurationProvider
 {
-    private General $configuration;
+    private readonly General $configuration;
 
     public function __construct(string $filename)
     {
@@ -17,7 +17,7 @@ class GeneralConfiguration implements GeneralConfigurationProvider
             throw new ConfigurationNotFoundException();
         }
 
-        $ini = parse_ini_file($configurationFile);
+        $ini = (array)parse_ini_file($configurationFile);
 
         $this->configuration = new General(
             $ini['title'],

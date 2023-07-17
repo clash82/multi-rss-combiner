@@ -4,16 +4,8 @@ namespace MultiRssCombiner\Value;
 
 class Channel
 {
-    private string $name;
-
-    private string $url;
-
-    public function __construct(
-        string $name,
-        string $url
-    ) {
-        $this->name = $name;
-        $this->url = $url;
+    public function __construct(private readonly string $name, private readonly string $url)
+    {
     }
 
     public function getName(): string
