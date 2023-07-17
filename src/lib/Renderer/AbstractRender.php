@@ -24,12 +24,11 @@ abstract class AbstractRender
         ob_start();
         include $filePath;
 
-        $output = ob_get_clean();
+        $output = (string)ob_get_clean();
 
         // remove useless white characters, multiple spaces etc.
         $output = trim(preg_replace('/\s\s+/', ' ', $output));
-        $output = str_replace(["\t", "\r", "\n"], '', $output);
 
-        return $output;
+        return str_replace(["\t", "\r", "\n"], '', $output);
     }
 }

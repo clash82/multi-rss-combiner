@@ -6,7 +6,7 @@ use MultiRssCombiner\Value\Item;
 
 class RssCache implements CacheManager
 {
-    private string $fileName;
+    private readonly string $fileName;
 
     /** @var Item[] */
     private array $cache = [];

@@ -20,7 +20,7 @@ class ChannelConfiguration implements ChannelConfigurationProvider
                 continue;
             }
 
-            $ini = parse_ini_file($fileInfo->getRealPath());
+            $ini = (array)parse_ini_file($fileInfo->getRealPath());
 
             $this->channels[] = new Channel(
                 $ini['name'],

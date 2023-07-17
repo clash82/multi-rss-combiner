@@ -6,36 +6,8 @@ use DateTime;
 
 class Item
 {
-    private string $channelName;
-
-    private string $title;
-
-    private string $description;
-
-    private string $link;
-
-    private string $guid;
-
-    private DateTime $pubDate;
-
-    private ?string $image = null;
-
-    public function __construct(
-        string $channelName,
-        string $title,
-        string $description,
-        string $link,
-        string $guid,
-        ?string $image,
-        \DateTime $pubDate
-    ) {
-        $this->channelName = $channelName;
-        $this->title = $title;
-        $this->description = $description;
-        $this->link = $link;
-        $this->guid = $guid;
-        $this->image = $image;
-        $this->pubDate = $pubDate;
+    public function __construct(private readonly string $channelName, private readonly string $title, private readonly string $description, private readonly string $link, private readonly string $guid, private readonly ?string $image, private readonly DateTime $pubDate)
+    {
     }
 
     public function getChannelName(): string
@@ -77,7 +49,7 @@ class Item
 
     public function hasDescription(): bool
     {
-        return !empty(trim(strip_tags($this->description)));
+        return trim(strip_tags($this->description)) !== '';
     }
 
     public function getPubDate(): \DateTime

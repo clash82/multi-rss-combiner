@@ -14,13 +14,13 @@ use Wolfcast\BrowserDetection;
 
 class App
 {
-    public const APP_RSS_CACHE_FILE = '/cache/cache.xml';
+    final public const APP_RSS_CACHE_FILE = '/cache/cache.xml';
 
-    public const APP_CONFIGURATION_FILE = '/config/general.ini';
+    final public const APP_CONFIGURATION_FILE = '/config/general.ini';
 
-    public const APP_PUBLIC_FILES_DIR = '/public/';
+    final public const APP_PUBLIC_FILES_DIR = '/public/';
 
-    public const APP_CHANNEL_CONFIGURATION_PATH = '/config/';
+    final public const APP_CHANNEL_CONFIGURATION_PATH = '/config/';
 
     public function buildView(bool $showDefault = true): void
     {
@@ -71,7 +71,7 @@ class App
             }
 
             foreach ($feedItems as $item) {
-                $date = new \DateTime($item->get_date());
+                $date = new \DateTime((string)$item->get_date());
 
                 $image = '';
                 if (null !== $item->get_content()) {
@@ -98,9 +98,7 @@ class App
         }
 
         // reorder items
-        usort($items, function ($a, $b) {
-            return $b->getPubDate() <=> $a->getPubDate();
-        });
+        usort($items, fn($a, $b) => $b->getPubDate() <=> $a->getPubDate());
 
         // store everything in cache
         $cache = new RssCacheManager(self::APP_RSS_CACHE_FILE);
@@ -126,7 +124,7 @@ class App
             $links[] = $src;
         }
 
-        if (\count($links) > 0) {
+        if ($links !== []) {
             return $links[0];
         }
 
