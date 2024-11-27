@@ -72,7 +72,7 @@ class General
 
     public function getFeedUrl(): string
     {
-        if (!empty($this->feedUrl)) {
+        if ($this->feedUrl !== '') {
             return $this->feedUrl;
         }
 
