@@ -30,7 +30,8 @@ class GeneralConfiguration implements GeneralConfigurationProvider
             (int) $ini['icon_height'],
             $ini['date_format'],
             (int) $ini['limit'],
-            $ini['guid_prefix']
+            $ini['guid_prefix'],
+            $ini['feed_url']
         );
     }
 

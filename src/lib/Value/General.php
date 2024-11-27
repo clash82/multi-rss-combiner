@@ -6,7 +6,7 @@ use MultiRssCombiner\App;
 
 class General
 {
-    public function __construct(private readonly string $title, private readonly string $description, private readonly string $link, private readonly string $language, private readonly string $copyright, private readonly string $icon, private readonly int $iconWidth, private readonly int $iconHeight, private readonly string $dateFormat, private readonly int $limit, private readonly string $guidPrefix)
+    public function __construct(private readonly string $title, private readonly string $description, private readonly string $link, private readonly string $language, private readonly string $copyright, private readonly string $icon, private readonly int $iconWidth, private readonly int $iconHeight, private readonly string $dateFormat, private readonly int $limit, private readonly string $guidPrefix, private readonly string $feedUrl)
     {
     }
 
@@ -68,6 +68,15 @@ class General
     public function getGuidPrefix(): string
     {
         return $this->guidPrefix;
+    }
+
+    public function getFeedUrl(): string
+    {
+        if (!empty($this->feedUrl)) {
+            return $this->feedUrl;
+        }
+
+        return '/?xml';
     }
 
     public function getCurrentHostname(): string
