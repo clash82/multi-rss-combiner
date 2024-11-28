@@ -4,10 +4,22 @@ namespace MultiRssCombiner\Value;
 
 use MultiRssCombiner\App;
 
-class General
+readonly class General
 {
-    public function __construct(private readonly string $title, private readonly string $description, private readonly string $link, private readonly string $language, private readonly string $copyright, private readonly string $icon, private readonly int $iconWidth, private readonly int $iconHeight, private readonly string $dateFormat, private readonly int $limit, private readonly string $guidPrefix, private readonly string $feedUrl)
-    {
+    public function __construct(
+        private string $title,
+        private string $description,
+        private string $link,
+        private string $language,
+        private string $copyright,
+        private string $icon,
+        private int $iconWidth,
+        private int $iconHeight,
+        private string $dateFormat,
+        private int $limit,
+        private string $guidPrefix,
+        private string $feedUrl
+    ) {
     }
 
     public function getTitle(): string

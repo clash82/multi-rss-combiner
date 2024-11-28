@@ -22,9 +22,11 @@ class ChannelConfiguration implements ChannelConfigurationProvider
 
             $ini = (array)parse_ini_file($fileInfo->getRealPath());
 
-            $this->channels[] = new Channel(
+            $this->channels[$fileInfo->getFilename()] = new Channel(
+                $fileInfo->getFilename(),
                 $ini['name'],
-                $ini['url']
+                $ini['url'],
+                isset($ini['trim']) && $ini['trim']
             );
         }
     }
@@ -35,5 +37,15 @@ class ChannelConfiguration implements ChannelConfigurationProvider
     public function getAll(): array
     {
         return $this->channels;
+    }
+
+    public function getById(string $id): Channel
+    {
+        return $this->channels[$id];
+    }
+
+    public function channelExists(string $id): bool
+    {
+        return isset($this->channels[$id]);
     }
 }

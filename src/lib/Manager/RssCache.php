@@ -27,7 +27,7 @@ class RssCache implements CacheManager
 
         foreach ($this->cache as $item) {
             $element = $xml->addChild('item');
-            $element->addChild('channelName', $item->getChannelName());
+            $element->addAttribute('channel', $item->getChannelId());
             $element->addChild('title', $item->getTitle());
             $element->addChild('description', $item->getDescription());
             $element->addChild('link', $item->getLink());

@@ -9,7 +9,7 @@ class RssCache implements CacheProvider
     /** @var Item[] */
     private array $cache = [];
 
-    public function __construct(string $fileName, int $limit)
+    public function __construct(ChannelConfiguration $channelConfiguration, string $fileName, int $limit)
     {
         $cacheFile = sprintf('%s%s', getcwd(), $fileName);
 
@@ -34,11 +34,16 @@ class RssCache implements CacheProvider
             }
 
             $item = $cacheContent['item'][$i];
+            $channelId = $item['@attributes']['channel'];
+
+            if (!$channelConfiguration->channelExists($channelId)) {
+                continue;
+            }
 
             $date = new \DateTime($item['pubDate']);
 
             $this->cache[] = new Item(
-                $item['channelName'],
+                $channelConfiguration->getById($channelId),
                 $item['title'],
                 $item['description'],
                 $item['link'],

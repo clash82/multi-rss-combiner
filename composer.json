@@ -15,6 +15,7 @@
     "ext-simplexml": "*",
     "ext-json": "*",
     "ext-libxml": "*",
+    "ext-dom": "*",
     "wolfcast/browser-detection": "^2.9",
     "simplepie/simplepie": "^1.8"
   },

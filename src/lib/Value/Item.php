@@ -4,15 +4,27 @@ namespace MultiRssCombiner\Value;
 
 use DateTime;
 
-class Item
+readonly class Item
 {
-    public function __construct(private readonly string $channelName, private readonly string $title, private readonly string $description, private readonly string $link, private readonly string $guid, private readonly ?string $image, private readonly DateTime $pubDate)
+    public function __construct(
+        private Channel $channel,
+        private string $title,
+        private string $description,
+        private string $link,
+        private string $guid,
+        private ?string $image,
+        private DateTime $pubDate
+    ) {
+    }
+
+    public function getChannelId(): string
     {
+        return $this->channel->getId();
     }
 
     public function getChannelName(): string
     {
-        return $this->channelName;
+        return $this->channel->getName();
     }
 
     public function getTitle(): string
@@ -22,17 +34,23 @@ class Item
 
     public function getDescription(): string
     {
-        # remove whitespaces inside HTML tags
-        $description = preg_replace('/\s+/', ' ', $this->description);
+        $description = $this->description;
 
-        # replace <br /> and redundant <br /> tags
-        $description = preg_replace('#<br />(\s*<br />)+#', '<br>', $description);
+        if ($this->channel->isTrimContent()) {
+            # remove whitespaces inside HTML tags
+            $description = preg_replace('/\s+/', ' ', $description);
 
-        # replace redundant <br> tags
-        $description = preg_replace('#<br>(\s*<br>)+#', '<br>', $description);
+            # replace <br /> and redundant <br /> tags
+            $description = preg_replace('#<br />(\s*<br />)+#', '<br>', $description);
 
-        # remove all HTML tags
-        return strip_tags($description);
+            # replace redundant <br> tags
+            $description = preg_replace('#<br>(\s*<br>)+#', '<br>', $description);
+
+            # remove all HTML tags
+            $description = strip_tags($description);
+        }
+
+        return $description;
     }
 
     public function getLink(): string

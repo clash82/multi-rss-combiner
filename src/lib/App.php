@@ -10,6 +10,7 @@ use MultiRssCombiner\Provider\RssCache as RssCacheProvider;
 use MultiRssCombiner\Renderer\PageRenderer;
 use MultiRssCombiner\Renderer\RssRenderer;
 use MultiRssCombiner\Value\Item;
+use SimplePie\SimplePie;
 use Wolfcast\BrowserDetection;
 
 class App
@@ -22,10 +23,17 @@ class App
 
     final public const APP_CHANNEL_CONFIGURATION_PATH = '/config/';
 
+    private readonly ChannelConfiguration $channels;
+
+    public function __construct()
+    {
+        $this->channels = new ChannelConfiguration(self::APP_CHANNEL_CONFIGURATION_PATH);
+    }
+
     public function buildView(bool $showDefault = true): void
     {
         $configuration = new GeneralConfiguration(self::APP_CONFIGURATION_FILE);
-        $cache = new RssCacheProvider(self::APP_RSS_CACHE_FILE, $configuration->get()->getLimit());
+        $cache = new RssCacheProvider($this->channels, self::APP_RSS_CACHE_FILE, $configuration->get()->getLimit());
         $browser = new BrowserDetection();
 
         // detect if client belongs to the one of the supported web browsers or is just an RSS reader
@@ -45,17 +53,15 @@ class App
 
     public function buildCache(): void
     {
-        $channels = new ChannelConfiguration(self::APP_CHANNEL_CONFIGURATION_PATH);
-
-        $feed = new \SimplePie();
-        $feed->enable_order_by_date(true);
+        $feed = new SimplePie();
+        $feed->enable_order_by_date();
         $feed->force_feed(true);
         $feed->enable_cache(false);
 
         $items = [];
 
         // fetch RSS details
-        foreach ($channels->getAll() as $channel) {
+        foreach ($this->channels->getAll() as $channel) {
             printf('Fetching %s (%s)<br>', $channel->getName(), $channel->getUrl());
 
             $feed->set_feed_url($channel->getUrl());
@@ -84,7 +90,7 @@ class App
                 }
 
                 $item = new Item(
-                    $channel->getName(),
+                    $channel,
                     $item->get_title() ?? '',
                     $description ?? '',
                     $item->get_link() ?? '',
@@ -98,7 +104,7 @@ class App
         }
 
         // reorder items
-        usort($items, fn($a, $b) => $b->getPubDate() <=> $a->getPubDate());
+        usort($items, fn ($a, $b) => $b->getPubDate() <=> $a->getPubDate());
 
         // store everything in cache
         $cache = new RssCacheManager(self::APP_RSS_CACHE_FILE);

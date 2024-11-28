@@ -5,9 +5,9 @@ namespace MultiRssCombiner\Provider;
 use MultiRssCombiner\Exception\ConfigurationNotFoundException;
 use MultiRssCombiner\Value\General;
 
-class GeneralConfiguration implements GeneralConfigurationProvider
+readonly class GeneralConfiguration implements GeneralConfigurationProvider
 {
-    private readonly General $configuration;
+    private General $configuration;
 
     public function __construct(string $filename)
     {

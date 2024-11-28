@@ -1,2 +1,5 @@
 name=Sample RSS channel name
 rss=https://link-to-your-working-rss-channel
+
+; remove whitespaces and HTML tags from post content (0|1, disabled by default)
+trim=0
