@@ -22,9 +22,17 @@ class Item
 
     public function getDescription(): string
     {
-        $description = preg_replace('#<br />(\s*<br />)+#', '<br>', $this->description);
+        # remove whitespaces inside HTML tags
+        $description = preg_replace('/\s+/', ' ', $this->description);
 
-        return preg_replace('#<br>(\s*<br>)+#', '<br>', $description);
+        # replace <br /> and redundant <br /> tags
+        $description = preg_replace('#<br />(\s*<br />)+#', '<br>', $description);
+
+        # replace redundant <br> tags
+        $description = preg_replace('#<br>(\s*<br>)+#', '<br>', $description);
+
+        # remove all HTML tags
+        return strip_tags($description);
     }
 
     public function getLink(): string
