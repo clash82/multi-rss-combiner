@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7268c8ef207d56f1f11be4c8e219257c",
+    "content-hash": "f578750ff2361c86d72732191b6d61d3",
     "packages": [
         {
             "name": "simplepie/simplepie",
@@ -2786,7 +2786,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.1",
+        "php": "^8.2",
         "ext-simplexml": "*",
         "ext-json": "*",
         "ext-libxml": "*"
