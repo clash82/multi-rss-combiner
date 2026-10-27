@@ -4,4 +4,4 @@ use MultiRssCombiner\App;
 
 require_once __DIR__.'/vendor/autoload.php';
 
-(new App())->buildCache();
+new App()->buildCache();

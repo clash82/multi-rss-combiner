@@ -15,13 +15,13 @@ use Wolfcast\BrowserDetection;
 
 class App
 {
-    final public const APP_RSS_CACHE_FILE = '/cache/cache.xml';
+    final public const string APP_RSS_CACHE_FILE = '/cache/cache.xml';
 
-    final public const APP_CONFIGURATION_FILE = '/config/general.ini';
+    final public const string APP_CONFIGURATION_FILE = '/config/general.ini';
 
-    final public const APP_PUBLIC_FILES_DIR = '/public/';
+    final public const string APP_PUBLIC_FILES_DIR = '/public/';
 
-    final public const APP_CHANNEL_CONFIGURATION_PATH = '/config/';
+    final public const string APP_CHANNEL_CONFIGURATION_PATH = '/config/';
 
     private readonly ChannelConfiguration $channels;
 

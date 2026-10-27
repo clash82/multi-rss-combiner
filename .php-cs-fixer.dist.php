@@ -14,7 +14,7 @@ $config = new PhpCsFixer\Config();
 return $config
     ->setRiskyAllowed(true)
     ->setRules([
-        '@PHP71Migration' => true,
+        '@PHP85Migration' => true,
         'array_syntax' => ['syntax' => 'short'],
         'combine_consecutive_unsets' => true,
         'heredoc_to_nowdoc' => true,
